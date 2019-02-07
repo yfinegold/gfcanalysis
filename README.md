@@ -28,7 +28,7 @@ is using the
 package. After installing `devtools`, type:
 
 ```R
-install_github('azvoleff/gfcanalysis')
+install_github('yfinegold/gfcanalysis')
 ```
 
 ## Usage
