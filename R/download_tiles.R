@@ -44,7 +44,7 @@ download_tile <- function(tile_url, local_path) {
 #' function.
 #' @param output_folder the folder to save output data in
 #' @param images which images to download. Can be any of 'treecover2000', 
-#' 'loss', 'gain', 'lossyear', 'datamask', 'first', and 'last'.
+#'  'gain', 'lossyear', 'datamask', 'first', and 'last'.
 #' @examples
 #' \dontrun{
 #' output_folder <- 'H:/Data/TEAM/GFC_Product'
@@ -52,9 +52,9 @@ download_tile <- function(tile_url, local_path) {
 #' download_tiles(tiles, output_folder)
 #' }
 download_tiles <- function(tiles, output_folder,
-                           images=c('treecover2000', 'loss', 'gain', 
+                           images=c('treecover2000',  'gain', 
                                     'lossyear', 'datamask')) {
-    stopifnot(all(images %in% c('treecover2000', 'loss', 'gain', 'lossyear', 
+    stopifnot(all(images %in% c('treecover2000',  'gain', 'lossyear', 
                                 'datamask', 'first', 'last')))
     if (!file_test('-d', output_folder)) {
         stop('output_folder does not exist')
@@ -78,10 +78,10 @@ download_tiles <- function(tiles, output_folder,
         } else {
             max_y <- paste0(sprintf('%02i', max_y), 'N')
         }
-        file_root <- 'Hansen_GFC2014_'
+        file_root <- 'Hansen_GFC-2017-v1.5_'
         file_suffix <- paste0('_', max_y, '_', min_x, '.tif')
         filenames <- paste0(file_root, images, file_suffix)
-        tile_urls <- paste0('http://commondatastorage.googleapis.com/earthenginepartners-hansen/GFC2014/',
+        tile_urls <- paste0('https://storage.googleapis.com/earthenginepartners-hansen/GFC-2017-v1.5/',
                       filenames)
         local_paths <- file.path(output_folder, filenames)
 
