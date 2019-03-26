@@ -26,7 +26,7 @@ but have file sizes differing from the file on the Google server.
 }
 \examples{
 \dontrun{
-output_folder <- 'H:/Data/TEAM/GFC_Product'
+output_folder <- '~/downloads/'
 tiles <- calc_gfc_tiles(test_poly)
 download_tiles(tiles, output_folder)
 }
