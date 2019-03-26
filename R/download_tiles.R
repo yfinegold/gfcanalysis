@@ -78,10 +78,10 @@ download_tiles <- function(tiles, output_folder,
     } else {
       max_y <- paste0(sprintf('%02i', max_y), 'N')
     }
-    file_root <- 'Hansen_GFC-2017-v1.5_'
+    file_root <- 'Hansen_GFC-2018-v1.6_'
     file_suffix <- paste0('_', max_y, '_', min_x, '.tif')
     filenames <- paste0(file_root, images, file_suffix)
-    tile_urls <- paste0('https://storage.googleapis.com/earthenginepartners-hansen/GFC-2017-v1.5/',
+    tile_urls <- paste0('https://storage.googleapis.com/earthenginepartners-hansen/GFC-2018-v1.6/',
                         filenames)
     local_paths <- file.path(output_folder, filenames)
     
