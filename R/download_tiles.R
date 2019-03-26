@@ -47,7 +47,7 @@ download_tile <- function(tile_url, local_path) {
 #'  'gain', 'lossyear', 'datamask', 'first', and 'last'.
 #' @examples
 #' \dontrun{
-#' output_folder <- 'H:/Data/TEAM/GFC_Product'
+#' output_folder <- '~/downloads/'
 #' tiles <- calc_gfc_tiles(test_poly)
 #' download_tiles(tiles, output_folder)
 #' }

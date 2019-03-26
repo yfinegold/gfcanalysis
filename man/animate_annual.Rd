@@ -6,7 +6,7 @@
 \usage{
 animate_annual(aoi, gfc_stack, out_dir = getwd(),
   out_basename = "gfc_animation", site_name = "", type = "html",
-  height = 3, width = 3, dpi = 300, dataset = "GFC-2017-v1.5")
+  height = 3, width = 3, dpi = 300)
 }
 \arguments{
 \item{aoi}{one or more AOI polygons as a \code{SpatialPolygonsDataFrame} 
@@ -30,9 +30,6 @@ coordinate system, it will be reprojected to WGS84.}
 \item{width}{desired width of the animation GIF in inches}
 
 \item{dpi}{dots per inch for the output image}
-
-\item{dataset}{which version of the Hansen data to use
-\code{\link{annual_stack}} was run}
 }
 \description{
 Produces an animation of annual forest change in the area bounded by the 

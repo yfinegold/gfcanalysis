@@ -109,8 +109,8 @@ animate_annual <- function(aoi, gfc_stack, out_dir=getwd(),
     dir.create(out_dir)
   }
   out_dir <- normalizePath(out_dir)
-  ani.options(outdir=out_dir, ani.width=width*dpi, ani.height=height*dpi, 
-              verbose=FALSE)
+  # ani.options(outdir=out_dir, ani.width=width*dpi, ani.height=height*dpi, 
+  #             verbose=FALSE)
   
   if (tolower(file_ext(out_basename)) != '') {
     stop('out_basename should not have an extension')
@@ -126,26 +126,26 @@ animate_annual <- function(aoi, gfc_stack, out_dir=getwd(),
   maxpixels <- ceiling((width * height * dpi^2)/1000) * 1000
   if (type == 'gif') {
     out_file <- paste(out_basename, '.gif')
-    saveGIF({
-      for (n in 1:nlayers(gfc_stack)) {
-        p <- plot_gfc(gfc_stack[[n]], aoi, dates[n], 
-                      size_scale=4, maxpixels)
-        print(p)
-      }
-    }, interval=0.5, movie.name=out_file)
+    # saveGIF({
+    #   for (n in 1:nlayers(gfc_stack)) {
+    #     p <- plot_gfc(gfc_stack[[n]], aoi, dates[n], 
+    #                   size_scale=4, maxpixels)
+    #     print(p)
+    #   }
+    # }, interval=0.5, movie.name=out_file)
   } else if (type == 'html') {
-    saveHTML({
-      for (n in 1:nlayers(gfc_stack)) {
-        p <- plot_gfc(gfc_stack[[n]], aoi, dates[n], 
-                      size_scale=4, maxpixels)
-        print(p)
-      }
-    },
-    img.name=out_basename,
-    imgdir=paste0(out_basename, '_imgs'),
-    outdir=out_dir,
-    htmlfile=paste0(out_basename, ".html"),
-    autobrowse=FALSE,
-    title=paste(site_name, 'forest change'))
+    # saveHTML({
+    #   for (n in 1:nlayers(gfc_stack)) {
+    #     p <- plot_gfc(gfc_stack[[n]], aoi, dates[n], 
+    #                   size_scale=4, maxpixels)
+    #     print(p)
+    #   }
+    # },
+    # img.name=out_basename,
+    # imgdir=paste0(out_basename, '_imgs'),
+    # outdir=out_dir,
+    # htmlfile=paste0(out_basename, ".html"),
+    # autobrowse=FALSE,
+    # title=paste(site_name, 'forest change'))
   }
 }
