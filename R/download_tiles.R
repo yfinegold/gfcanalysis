@@ -13,6 +13,7 @@ verify_download <- function(tile_url, local_path) {
     }
 }
 
+#' @importFrom utils download.file
 download_tile <- function(tile_url, local_path) {
     ret_code <- download.file(tile_url, local_path, mode="wb")
     if (ret_code != 0) {
@@ -39,12 +40,18 @@ download_tile <- function(tile_url, local_path) {
 #' @export
 #' @importFrom sp bbox
 #' @importFrom stringr str_extract
+#' @importFrom utils file_test
 #' @param tiles \code{SpatialPolygonsDataFrame} with GFC 
 #' product tiles to download, as calculated by the \code{calc_gfc_tiles} 
 #' function.
 #' @param output_folder the folder to save output data in
 #' @param images which images to download. Can be any of 'treecover2000', 
+<<<<<<< HEAD
 #'  'gain', 'lossyear', 'datamask', 'first', and 'last'.
+=======
+#' 'loss', 'gain', 'lossyear', 'datamask', 'first', and 'last'.
+#' @param dataset which version of the Hansen data to use
+>>>>>>> upstream/master
 #' @examples
 #' \dontrun{
 #' output_folder <- 'H:/Data/TEAM/GFC_Product'
@@ -52,9 +59,16 @@ download_tile <- function(tile_url, local_path) {
 #' download_tiles(tiles, output_folder)
 #' }
 download_tiles <- function(tiles, output_folder,
+<<<<<<< HEAD
                            images=c('treecover2000',  'gain', 
                                     'lossyear', 'datamask')) {
     stopifnot(all(images %in% c('treecover2000',  'gain', 'lossyear', 
+=======
+                           images=c('treecover2000', 'lossyear', 'gain', 
+                                    'datamask'),
+                           dataset='GFC-2017-v1.5') {
+    stopifnot(all(images %in% c('treecover2000', 'lossyear', 'gain',
+>>>>>>> upstream/master
                                 'datamask', 'first', 'last')))
     if (!file_test('-d', output_folder)) {
         stop('output_folder does not exist')
@@ -78,11 +92,19 @@ download_tiles <- function(tiles, output_folder,
         } else {
             max_y <- paste0(sprintf('%02i', max_y), 'N')
         }
+<<<<<<< HEAD
         file_root <- 'Hansen_GFC-2017-v1.5_'
         file_suffix <- paste0('_', max_y, '_', min_x, '.tif')
         filenames <- paste0(file_root, images, file_suffix)
         tile_urls <- paste0('https://storage.googleapis.com/earthenginepartners-hansen/GFC-2017-v1.5/',
                       filenames)
+=======
+        file_root <- paste0('Hansen_', dataset, '_')
+        file_suffix <- paste0('_', max_y, '_', min_x, '.tif')
+        filenames <- paste0(file_root, images, file_suffix)
+
+        tile_urls <- paste0(paste0('http://commondatastorage.googleapis.com/earthenginepartners-hansen/', dataset, '/'), filenames)
+>>>>>>> upstream/master
         local_paths <- file.path(output_folder, filenames)
 
         for (i in 1:length(filenames)) {
