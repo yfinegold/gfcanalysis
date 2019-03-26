@@ -28,6 +28,7 @@ is using the
 package. After installing `devtools`, type:
 
 ```R
+library(devtools)
 install_github('yfinegold/gfcanalysis')
 ```
 
