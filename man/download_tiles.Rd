@@ -5,7 +5,7 @@
 \title{Download a set of GFC tiles}
 \usage{
 download_tiles(tiles, output_folder, images = c("treecover2000", "gain",
-  "lossyear", "datamask"))
+  "lossyear", "datamask"), datasource = "GFC-2018-v1.6")
 }
 \arguments{
 \item{tiles}{\code{SpatialPolygonsDataFrame} with GFC 
@@ -16,6 +16,9 @@ function.}
 
 \item{images}{which images to download. Can be any of 'treecover2000', 
 'gain', 'lossyear', 'datamask', 'first', and 'last'.}
+
+\item{datasource}{which GFC repository to download from. The default is 
+'GFC-2018-v1.6' but can be modified to download older versions of the dataset}
 }
 \description{
 This function first checks whether each tile in a set GFC product tiles is 

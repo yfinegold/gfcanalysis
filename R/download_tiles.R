@@ -45,6 +45,8 @@ download_tile <- function(tile_url, local_path) {
 #' @param output_folder the folder to save output data in
 #' @param images which images to download. Can be any of 'treecover2000', 
 #'  'gain', 'lossyear', 'datamask', 'first', and 'last'.
+#' @param datasource which GFC repository to download from. The default is 
+#' 'GFC-2018-v1.6' but can be modified to download older versions of the dataset
 #' @examples
 #' \dontrun{
 #' output_folder <- '~/downloads/'
@@ -53,7 +55,7 @@ download_tile <- function(tile_url, local_path) {
 #' }
 download_tiles <- function(tiles, output_folder,
                            images=c('treecover2000',  'gain', 
-                                    'lossyear', 'datamask')) {
+                                    'lossyear', 'datamask'),datasource='GFC-2018-v1.6') {
   stopifnot(all(images %in% c('treecover2000',  'gain', 'lossyear', 
                               'datamask', 'first', 'last')))
   if (!file_test('-d', output_folder)) {
@@ -78,10 +80,12 @@ download_tiles <- function(tiles, output_folder,
     } else {
       max_y <- paste0(sprintf('%02i', max_y), 'N')
     }
-    file_root <- 'Hansen_GFC-2018-v1.6_'
+    file_root <- paste0('Hansen_',datasource,'_')
     file_suffix <- paste0('_', max_y, '_', min_x, '.tif')
     filenames <- paste0(file_root, images, file_suffix)
-    tile_urls <- paste0('https://storage.googleapis.com/earthenginepartners-hansen/GFC-2018-v1.6/',
+    tile_urls <- paste0('https://storage.googleapis.com/earthenginepartners-hansen/',
+                        datasource,
+                        '/',
                         filenames)
     local_paths <- file.path(output_folder, filenames)
     
