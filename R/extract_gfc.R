@@ -5,11 +5,7 @@
 make_tile_mosaic <- function(aoi, data_folder, dataset, filename="",
                              stack="change", ...) {
     if (stack == 'change') {
-<<<<<<< HEAD
         image_names <- c('treecover2000', 'gain', 'lossyear', 
-=======
-        image_names <- c('treecover2000', 'lossyear', 'gain', 
->>>>>>> upstream/master
                          'datamask')
         band_names <- image_names
     } else if (stack == 'first') {
@@ -25,11 +21,8 @@ make_tile_mosaic <- function(aoi, data_folder, dataset, filename="",
     tiles <- calc_gfc_tiles(aoi)
     # Transform aoi to match tiles CRS so it can be used later for cropping
     aoi <- spTransform(aoi, CRS(proj4string(tiles)))
-<<<<<<< HEAD
-    file_root <- 'Hansen_GFC-2017-v1.5'
-=======
+
     file_root <- paste0('Hansen_', dataset, '_')
->>>>>>> upstream/master
 
     tile_stacks <- c()
     for (n in 1:length(tiles)) {
@@ -152,13 +145,10 @@ scale_toar <- function(x, ...) {
 #' \code{filename}, or \code{overwrite}.
 #' @return \code{RasterStack} with GFC layers
 extract_gfc <- function(aoi, data_folder, to_UTM=FALSE, stack="change", 
-                        dataset='GFC-2017-v1.5', ...) {
+                        dataset='GFC-2018-v1.6', ...) {
     if (stack == 'change') {
-<<<<<<< HEAD
         band_names <- c('treecover2000', 'gain', 'lossyear', 
-=======
-        band_names <- c('treecover2000', 'lossyear', 'gain', 
->>>>>>> upstream/master
+
                         'datamask')
     } else if (stack == 'first') {
         band_names <- c('Band3', 'Band4', 'Band5', 'Band7')

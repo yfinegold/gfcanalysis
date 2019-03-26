@@ -11,11 +11,7 @@ export(plot_gfc)
 export(scale_toar)
 export(threshold_gfc)
 export(utm_zone)
-<<<<<<< HEAD
 import(ggplot2)
-=======
-import(animation)
->>>>>>> upstream/master
 import(methods)
 import(raster)
 import(rgdal)

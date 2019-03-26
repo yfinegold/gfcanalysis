@@ -8,3 +8,4 @@
 *.rdx
 *.o
 *.dll
+.Rproj.user
